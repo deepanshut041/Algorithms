@@ -26,11 +26,18 @@ public class WhackAMole {
 
 	public boolean place(int x, int y){
 		//Updating moleGrid with M
-		moles[x][y] = true;
-		moleGrid[x][y] = 'M';
+		if (!moles[x][y]) {
+			moles[x][y] = true;
+			moleGrid[x][y] = 'M';
+			//updating number of moles left
+			molesLeft = molesLeft + 1;
+			//retuns true and add true to that position
+			return true;
+		}
+		else{
+			return false;
+		}
 		
-		//retuns true and add true to that position
-		return true;
 	}
 
 	public void whack(int x, int y){
@@ -81,10 +88,8 @@ public class WhackAMole {
 		for (int i = 0 ; i < 10 ; i++ ) {
 			if( whackAMole.place(i,moles[i])){
 				System.out.println("Successfully placed a mole");
-				//updating number of moles left
-				whackAMole.molesLeft = whackAMole.molesLeft + 1;
 			}else{
-				System.out.println("unsuccessfully placed a mole");
+				System.out.println("Successfully placed a mole");
 			}
 		}
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
