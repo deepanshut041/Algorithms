@@ -2,10 +2,11 @@ import java.util.Random;
 import java.io.*;
 public class WhackAMole {
 	//It contains three integer instance variables called score, molesLeft, and attemptsLeft and moleGrid which is a 2-dimensional array of chars
-	public int score, molesLeft,attemptsLeft;
-	public char moleGrid[][]
+	public int score, molesLeft,attemptsLeft,gridDimension;
+	public char moleGrid[][];
 	
 	public WhackAMole(int numAttempts, int gridDimension){
+		this.gridDimension = gridDimension;
 		this.molesLeft = 0;
 		this.attemptsLeft = numAttempts;
 		moleGrid = new char[gridDimension][gridDimension];
@@ -40,7 +41,7 @@ public class WhackAMole {
 				molesLeft--;
 				attemptsLeft--;
 				score++;
-				moleGrid[x][y] = 'W'
+				moleGrid[x][y] = 'W';
 			}
 			else{
 				attemptsLeft--;
@@ -76,14 +77,14 @@ public class WhackAMole {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Welcome to the game WhackAMole");
 		System.out.println("You have maximum 50 attemps to play the game");
-		while (numAttempts != 0){	
-			printGridToUser();
+		while (whackAMole.attemptsLeft != 0){
+			whackAMole.printGridToUser();
 			System.out.println("Enter the location where you want Whack in x and y respectively");
 			int x = Integer.parseInt(in.readLine());
 			int y = Integer.parseInt(in.readLine());
-			whack(x, y); 
+			whackAMole.whack(x, y); 
 		}
-		printGrid();
-		System.out.println("Your score is : " + score );
+		whackAMole.printGrid();
+		System.out.println("Your score is : " + whackAMole.score );
 	}
 }
