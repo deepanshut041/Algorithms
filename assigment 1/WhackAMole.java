@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.io.*;
 public class WhackAMole {
 	//It contains three integer instance variables called score, molesLeft, and attemptsLeft and moleGrid which is a 2-dimensional array of chars
 	public int score, molesLeft,attemptsLeft;
@@ -70,7 +71,19 @@ public class WhackAMole {
 		}
 	}
 
-	public static void main(String[] args) {
-		WhackAMole whackAMole = new WhackAMole();
+	public static void main(String[] args)throws IOException {
+		WhackAMole whackAMole = new WhackAMole(50, 10);
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Welcome to the game WhackAMole");
+		System.out.println("You have maximum 50 attemps to play the game");
+		while (numAttempts != 0){	
+			printGridToUser();
+			System.out.println("Enter the location where you want Whack in x and y respectively");
+			int x = Integer.parseInt(in.readLine());
+			int y = Integer.parseInt(in.readLine());
+			whack(x, y); 
+		}
+		printGrid();
+		System.out.println("Your score is : " + score );
 	}
 }
