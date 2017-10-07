@@ -2,20 +2,19 @@ import java.util.Random;
 import java.io.*;
 public class WhackAMole {
 	//It contains three integer instance variables called score, molesLeft, and attemptsLeft and moleGrid which is a 2-dimensional array of chars
-	public int score, molesLeft,attemptsLeft,gridDimension;
-	public boolean leaveGame,moles[][];
+	public int score, molesLeft, attemptsLeft, gridDimension;
+	public boolean moles[][];
 	public char moleGrid[][];
 	
 	public WhackAMole(int numAttempts, int gridDimension){
+
 		this.gridDimension = gridDimension;
 		this.molesLeft = 0;
 		this.attemptsLeft = numAttempts;
-		leaveGame = false;
+		this.score = 0;
 		moleGrid = new char[gridDimension][gridDimension];
 		moles = new boolean[gridDimension][gridDimension];
-		//Making object of random class
-		Random rand = new Random();
-
+		
 		//Initialize the moleGrid with the '*'.
 		for (int i = 0 ; i < gridDimension ; i++ ) {
 			for ( int j = 0 ; j < gridDimension ; j++ ) {
@@ -23,38 +22,31 @@ public class WhackAMole {
 				moles[i][j] = false;
 			}
 		}
-		for (int i = 0 ; i < gridDimension ; i++ ) {
-			int n= rand.nextInt(gridDimension);
-			boolean b = place(i,n);
-		}
 	}
 
 	public boolean place(int x, int y){
-		//Updating moleGrid with m
-		moles[x][y] =true;
-		//updating number of moles left
-		molesLeft++;
+		//Updating moleGrid with M
+		moles[x][y] = true;
+		moleGrid[x][y] = 'M';
+		
+		//retuns true and add true to that position
 		return true;
 	}
 
 	public void whack(int x, int y){
-		if ((x == -1 && y == -1) || attemptsLeft == 0) {
-			leaveGame = true;
+		if (x == -1 && y == -1) {
+			attemptsLeft = 0;
 		}
 		else{
 			if (moles[x][y]){
-				molesLeft--;
-				attemptsLeft--;
-				score++;
+				molesLeft = molesLeft - 1;
+				attemptsLeft = attemptsLeft -1;
+				score = score + 1;
 				moleGrid[x][y] = 'W';
 				moles[x][y] = false;
 			}
 			else{
-				attemptsLeft--;
-			}
-
-			if (attemptsLeft == 0) {
-				leaveGame = true;
+				attemptsLeft = attemptsLeft - 1;
 			}
 		}
 	}
@@ -84,11 +76,23 @@ public class WhackAMole {
 
 	public static void main(String[] args)throws IOException {
 		WhackAMole whackAMole = new WhackAMole(50, 10);
+		
+		int moles[] = {3, 1, 3, 4, 7, 7, 2, 9, 2, 6};
+		for (int i = 0 ; i < 10 ; i++ ) {
+			if( whackAMole.place(i,moles[i])){
+				System.out.println("Successfully placed a mole");
+				//updating number of moles left
+				whackAMole.molesLeft = whackAMole.molesLeft + 1;
+			}else{
+				System.out.println("unsuccessfully placed a mole");
+			}
+		}
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Welcome to the game WhackAMole");
 		System.out.println("You have maximum 50 attemps to play the game");
-		while (!whackAMole.leaveGame){
+		while (whackAMole.attemptsLeft != 0){
 			whackAMole.printGridToUser();
+			System.out.println(" attemps left and moles " + whackAMole.attemptsLeft + " / " + whackAMole.molesLeft );
 			System.out.println("Enter the location where you want Whack in x and y respectively");
 			int x = Integer.parseInt(in.readLine());
 			int y = Integer.parseInt(in.readLine());
