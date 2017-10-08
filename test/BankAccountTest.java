@@ -1,12 +1,14 @@
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class BankAccountTest{
     BankAccount account;
 
     @Before
-    public void testDeposit(){
+    public void setUp(){
         account = new BankAccount("default");
     }
 

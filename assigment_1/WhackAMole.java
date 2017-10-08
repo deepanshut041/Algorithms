@@ -1,3 +1,5 @@
+package assigment_1;
+
 import java.util.Random;
 import java.io.*;
 public class WhackAMole {

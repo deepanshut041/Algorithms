@@ -1,3 +1,4 @@
+
 class BankAccount{
     double balance;
     String accountOwner;
@@ -13,6 +14,6 @@ class BankAccount{
 
     @Override
     public boolean equals(Object o){
-        return ((BankAccount) o).accountOwner).equals(accountOwner);
+        return (((BankAccount) o).accountOwner).equals(accountOwner);
     }
 }
