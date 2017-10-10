@@ -8,7 +8,9 @@ public class Squarelotron {
         int k = 1;
         for(int i = 0; i < size; i++){
             for (int j=0; j < size; j++){
-                squarelotron[i][j] = k * k;
+                //squarelotron[i][j] = k * k;
+                //Modified actual k for testing purpose
+                squarelotron[i][j] = k;
                 k++;
             }
         }
@@ -54,20 +56,22 @@ public class Squarelotron {
     }
 
     public void rotateRight(int numberOfTurns){
+        int rotatedArray[][] = new int[size][size] ;
         for (int n = 0; n < numberOfTurns ; n++){
             for(int i = 0; i < size; i++){
                 for (int j=0; j < size; j++) {
-                    squarelotron[i][j] = squarelotron[size - 1 - j][i];
+                    rotatedArray[i][j] = squarelotron[size - 1 - j][i];
                 }
             }
         }
         for (int n = numberOfTurns ; n < 0 ; n++){
             for(int i = 0; i < size; i++){
                 for (int j=0; j < size; j++) {
-                    squarelotron[i][j] = squarelotron[i][size - 1 - j];
+                    rotatedArray[i][j] = squarelotron[ j ][size- i -1];
                 }
             }
         }
+        squarelotron = rotatedArray;
     }
 
 }
