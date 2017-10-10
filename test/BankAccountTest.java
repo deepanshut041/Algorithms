@@ -24,10 +24,6 @@ public class BankAccountTest{
         assertEquals(account, new BankAccount("default"));
     }
 
-    @Test
-    public void testOwner2(){
-        assertTrue(account == new BankAccount("default"));
-    }
 
     @Test
     public void testOwner3(){
