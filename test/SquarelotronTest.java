@@ -31,14 +31,6 @@ public class SquarelotronTest {
                 {13,9,5,1},{14,10,6,2},{15,11,7,3},{16,12,8,4}
         };
         squarelotron.rotateRight(1);
-        int square[][] = squarelotron.getSquarelotron();
-        for (int i = 0; i < 4; i++){
-            for (int j = 0; j < 4; j++){
-                System.out.print(square[i][j]);
-            }
-            System.out.println();
-        }
-
         assertArrayEquals(null, array, squarelotron.getSquarelotron());
     }
 
@@ -48,14 +40,6 @@ public class SquarelotronTest {
                 {4, 8, 12, 16},{3, 7, 11, 15},{2, 6, 10, 14},{1, 5, 9, 13}
         };
         squarelotron.rotateRight(-1);
-        int square[][] = squarelotron.getSquarelotron();
-        for (int i = 0; i < 4; i++){
-            for (int j = 0; j < 4; j++){
-                System.out.print(square[i][j]);
-            }
-            System.out.println();
-        }
-
         assertArrayEquals(null, array, squarelotron.getSquarelotron());
     }
 }
