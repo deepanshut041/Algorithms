@@ -6,6 +6,8 @@ public class SinglyLinkedList<T> {
     private Node<T> head;
     private Node<T> tail;
 
+
+    // This method add new element to singlelinked list
     public void add(T element) {
         Node<T> nd = new Node<T>();
         nd.setValue(element);
@@ -20,6 +22,7 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    // This method add a new element after a given element
     public void addAfter(T element, T after) {
         Node<T> tmp = head;
         Node<T> refNode = null;
@@ -52,6 +55,8 @@ public class SinglyLinkedList<T> {
         }
     }
 
+
+    // Deleting front element of linkedlist
     public void deleteFront() {
 
         if (head == null) {
@@ -65,20 +70,19 @@ public class SinglyLinkedList<T> {
         System.out.println("Deleted: " + tmp.getValue());
     }
 
+    // Deleting elemnet after a specified element
     public void deleteAfter(T after) {
 
         Node<T> tmp = head;
         Node<T> refNode = null;
         System.out.println("Traversing to all nodes..");
-        /**
-         * Traverse till given element
-         */
+        // Traverse till given element
         while (true) {
             if (tmp == null) {
                 break;
             }
             if (tmp.compareTo(after) == 0) {
-                //found the target node, add after this node
+                // found the target node, add after this node
                 refNode = tmp;
                 break;
             }
@@ -95,7 +99,7 @@ public class SinglyLinkedList<T> {
             System.out.println("Unable to find the given element...");
         }
     }
-
+    // For printing all element in the node
     public void traverse() {
 
         Node<T> tmp = head;
